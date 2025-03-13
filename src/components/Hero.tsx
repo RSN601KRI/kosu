@@ -17,6 +17,7 @@ import {
   Database
 } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 
@@ -106,27 +107,27 @@ export default function Hero() {
     teamMatching: {
       title: "AI-Powered Team Matching",
       description: "Our AI analyzes skills, experience, and interests to suggest ideal teammates, making collaboration effortless and productive.",
-      image: "/teammatching.png" // Add your image URL here
+      image: "/teammatching.png" 
     },
     nftSwags: {
       title: "NFT-Based Event Swags",
       description: "Distribute secure NFT tickets and engagement badges as digital collectibles that showcase participation and achievements.",
-      image: "/nft.png" // Add your image URL here
+      image: "/nft.png" 
     },
     problemStatements: {
       title: "Dynamic Problem Statements",
       description: "Generate tailored challenges based on sponsor needs using AI to ensure relevant and impactful hackathon projects.",
-      image: "/problems.png" // Add your image URL here
+      image: "/problems.png" 
     },
     codeEvaluation: {
       title: "Automated Code Evaluation",
       description: "AI analyzes code quality, functionality, and security before final judging to ensure fair and comprehensive assessment.",
-      image: "/code.jpg" // Add your image URL here
+      image: "/code.jpg" 
     },
     smartHiring: {
       title: "AI-Powered Smart Hiring",
       description: "Filter participants using OCEAN personality traits and technical skills to identify ideal candidates for your organization.",
-      image: "/hiring.png" // Add your image URL here
+      image: "/hiring.png" 
     }
   };
   type FeatureKey = keyof typeof demoFeatures;
@@ -183,13 +184,15 @@ export default function Hero() {
                       transition={{ duration: 0.3 }}
                     />
                   </motion.button>
-                  <motion.button
-                    className="border border-gray-700 bg-gray-800 text-gray-300 px-8 py-3 rounded-lg font-medium"
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(30, 41, 59, 0.8)" }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Explore Events
-                  </motion.button>
+                  <Link href="/events">
+                    <motion.button
+                      className="border border-gray-700 bg-gray-800 text-gray-300 px-8 py-3 rounded-lg font-medium"
+                      whileHover={{ scale: 1.05, backgroundColor: "rgba(30, 41, 59, 0.8)" }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Explore Events
+                    </motion.button>
+                  </Link>
                 </motion.div>
               </div>
               <div className="md:w-1/2">
@@ -286,20 +289,24 @@ export default function Hero() {
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.6, duration: 0.5 }}
                     >
-                      <motion.button
-                        className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium"
-                        whileHover={{ scale: 1.05, backgroundColor: "#3b82f6" }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        View Details
-                      </motion.button>
-                      <motion.button
-                        className="flex-1 border border-gray-700 bg-gray-700/50 text-gray-300 px-4 py-2 rounded-lg text-sm font-medium"
-                        whileHover={{ scale: 1.05, backgroundColor: "rgba(55, 65, 81, 0.7)" }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        Register Now
-                      </motion.button>
+                      <Link href="/events/web3-developer-hackathon" className="flex-1">
+                        <motion.button
+                          className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium"
+                          whileHover={{ scale: 1.05, backgroundColor: "#3b82f6" }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          View Details
+                        </motion.button>
+                      </Link>
+                      <Link href="/events/web3-developer-hackathon/register" className="flex-1">
+                        <motion.button
+                          className="w-full border border-gray-700 bg-gray-700/50 text-gray-300 px-4 py-2 rounded-lg text-sm font-medium"
+                          whileHover={{ scale: 1.05, backgroundColor: "rgba(55, 65, 81, 0.7)" }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          Register Now
+                        </motion.button>
+                      </Link>
                     </motion.div>
                   </div>
                 </motion.div>
@@ -500,11 +507,11 @@ export default function Hero() {
                     <p className="text-blue-200">{demoFeatures[activeDemoFeature].description}</p>
                   </div>
                   
-                  <div className="mt-6 bg-gray-900/50 rounded-xl overflow-hidden border border-gray-700/50">
+                  <div className="mt-6 bg-gray-900/50 rounded-xl overflow-hidden border border-gray-700/50 group">
                     <Image
                       src={demoFeatures[activeDemoFeature].image} 
                       alt={demoFeatures[activeDemoFeature].title}
-                      className="w-full h-auto"
+                      className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
                       width={1000}
                       height={500}
                     />
@@ -601,9 +608,14 @@ export default function Hero() {
                       </li>
                     </ul>
                   </div>
-                  <div className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
-                    <Image src="/organizer.png" alt="Organizer Dashboard" className="w-full h-auto" width={1000}
-                      height={500} />
+                  <div className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 group">
+                    <Image 
+                      src="/organizer.png" 
+                      alt="Organizer Dashboard" 
+                      className="w-full h-auto transition-transform duration-300 group-hover:scale-105" 
+                      width={1000}
+                      height={500} 
+                    />
                   </div>
                 </motion.div>
               )}
@@ -649,9 +661,14 @@ export default function Hero() {
                       </li>
                     </ul>
                   </div>
-                  <div className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
-                    <Image src="/candidate.png" alt="Candidate Profile" className="w-full h-auto" width={1000}
-                      height={500}/>
+                  <div className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 group">
+                    <Image 
+                      src="/candidate.png" 
+                      alt="Candidate Profile" 
+                      className="w-full h-auto transition-transform duration-300 group-hover:scale-105" 
+                      width={1000}
+                      height={500}
+                    />
                   </div>
                 </motion.div>
               )}
@@ -697,9 +714,14 @@ export default function Hero() {
                       </li>
                     </ul>
                   </div>
-                  <div className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
-                    <Image src="/sponsor.png" alt="Sponsor Dashboard" className="w-full h-auto" width={1000}
-                      height={500}/>
+                  <div className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 group">
+                    <Image 
+                      src="/sponsor.png" 
+                      alt="Sponsor Dashboard" 
+                      className="w-full h-auto transition-transform duration-300 group-hover:scale-105" 
+                      width={1000}
+                      height={500}
+                    />
                   </div>
                 </motion.div>
               )}
@@ -729,7 +751,9 @@ export default function Hero() {
                   className="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700 group relative"
                   whileHover={{ y: -10, transition: { duration: 0.3 } }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-4">
                       <div>
@@ -766,20 +790,24 @@ export default function Hero() {
                       )}
                     </div>
                     <div className="flex gap-2">
-                      <motion.button
-                        className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium"
-                        whileHover={{ scale: 1.05, backgroundColor: "#3b82f6" }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        View Details
-                      </motion.button>
-                      <motion.button
-                        className="flex-1 border border-gray-700 bg-gray-700/50 text-gray-300 px-4 py-2 rounded-lg text-sm font-medium"
-                        whileHover={{ scale: 1.05, backgroundColor: "rgba(55, 65, 81, 0.7)" }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        Register Now
-                      </motion.button>
+                      <Link href={`/events/${hackathon.title.toLowerCase().replace(/ /g, '-')}`} className="flex-1">
+                        <motion.button
+                          className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium"
+                          whileHover={{ scale: 1.05, backgroundColor: "#3b82f6" }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          View Details
+                        </motion.button>
+                      </Link>
+                      <Link href={`/events/${hackathon.title.toLowerCase().replace(/ /g, '-')}/register`} className="flex-1">
+                        <motion.button
+                          className="w-full border border-gray-700 bg-gray-700/50 text-gray-300 px-4 py-2 rounded-lg text-sm font-medium"
+                          whileHover={{ scale: 1.05, backgroundColor: "rgba(55, 65, 81, 0.7)" }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          Register Now
+                        </motion.button>
+                      </Link>
                     </div>
                   </div>
                 </motion.div>
@@ -787,14 +815,16 @@ export default function Hero() {
             </div>
             
             <div className="mt-10 text-center">
-              <motion.button
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-medium inline-flex items-center gap-2"
-                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(79, 70, 229, 0.6)" }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View All Hackathons
-                <ChevronRight size={18} />
-              </motion.button>
+              <Link href="/events">
+                <motion.button
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-medium inline-flex items-center gap-2"
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(79, 70, 229, 0.6)" }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  View All Hackathons
+                  <ChevronRight size={18} />
+                </motion.button>
+              </Link>
             </div>
           </div>
         </section>

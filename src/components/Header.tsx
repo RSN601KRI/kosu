@@ -4,15 +4,7 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
-declare global {
-  interface Window {
-    aptos?: {
-      connect: () => Promise<{ address: string }>;
-      disconnect: () => Promise<void>;
-    };
-  }
-}
-
+// The window.aptos interface is already defined in aptosService.ts
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -126,6 +118,14 @@ function Header() {
               Resources
             </Link>
           </motion.div>
+          <motion.div
+            whileHover={{ y: -2 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <Link href="/events" className="text-gray-400 hover:text-blue-400 font-medium">
+              Events
+            </Link>
+          </motion.div>
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
@@ -196,6 +196,9 @@ function Header() {
               </Link>
               <Link href="/resources" className="text-gray-400 hover:text-blue-400 font-medium py-2">
                 Resources
+              </Link>
+              <Link href="/events" className="text-gray-400 hover:text-blue-400 font-medium py-2">
+                Events
               </Link>
               <div className="flex flex-col gap-4 pt-2">
                 {userAddress ? (
